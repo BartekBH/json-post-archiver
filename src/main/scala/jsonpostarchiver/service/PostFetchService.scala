@@ -19,7 +19,7 @@ object PostFetchService {
       client
         .expect[List[Post]](Uri.unsafeFromString(config.getPostsUrl))
         .flatTap { posts =>
-          Logger[IO].info(s"PostFetchService] Successfully fetched ${posts.length} posts")
+          Logger[IO].info(s"[PostFetchService] Successfully fetched ${posts.length} posts")
         }
         .handleErrorWith { err =>
           Logger[IO].error(s"[PostFetchService] Failed to fetch posts from ${config.getPostsUrl}") *>
